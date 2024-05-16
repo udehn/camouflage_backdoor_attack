@@ -1,9 +1,7 @@
 import os
 import numpy as np
 import cv2
-# from PIL import Image
 import tensorflow as tf
-# import utils
 from torchvision import transforms
 
 from PIL import Image, ImageDraw
@@ -157,23 +155,15 @@ class ScalingCamouflage(object):
 
 
 def write_image(arr, path):
-#    path = "attackImg/" + filename + ".jpg"
    arr = arr.astype(dtype='uint8')
    img = Image.fromarray(arr, 'RGB')
    img.save(path)
 
 
 def generateOneAttackImgs(sourceImgPath, targetImgPath, attackImgPath, ind):
-    # sourceImgPath = './sourceImg/eagle3.jpg'
-    # targetImgPath = './archive/val/n01440764/ILSVRC2012_val_00002138.JPEG'
-    # attackImgPath = './sourceImg/attackImg1.jpg'
-
 
     targetImg = Image.open(targetImgPath)
-    # targetImg = resnet_transforms(targetImg)
     targetImg = transforms.Resize((224, 224), interpolation=InterpolationMode.BILINEAR)(targetImg)
-    # targetImg = Image.Image.resize(targetImg, (224, 224), Image.BILINEAR)
-
 
     mask = Image.new("L", targetImg.size, 0)
     draw = ImageDraw.Draw(mask)
@@ -185,11 +175,9 @@ def generateOneAttackImgs(sourceImgPath, targetImgPath, attackImgPath, ind):
     # draw.rectangle([50,50,175,175], width=20)
 
     x, y = targetImg.size
-    # img2 = Image.open("D:/jupyter_project/evalxai/data/textures/2_leaf.jpg").convert("RGB").resize((x,y))
     img2 = Image.open("D:/jupyter_project/evalxai/data/textures/2_leaf.jpg").resize((x, y))
 
     img3 = Image.composite(img2, targetImg, mask=mask)
-
 
 
     # sourceImg = Image.open(sourceImgPath)
@@ -217,12 +205,3 @@ def generateOneAttackImgs(sourceImgPath, targetImgPath, attackImgPath, ind):
 
     attackImg = ca1.attack()
     write_image(attackImg, attackImgPath)
-    # write_image(attackImg, "attackImg/" + 'attackImg' + str(ind) + ".jpg")
-
-
-# if __name__ == '__main__':
-#     ind = 0
-#     sourceImgPath = './sourceImg/eagle3.jpg'
-#     targetImgPath = './archive/val/n01440764/ILSVRC2012_val_00002138.JPEG'
-#     attackImgPath = './attackImg/attackImg' + str(ind) + '.jpg'
-#     generateOneAttackImgs(sourceImgPath, targetImgPath, attackImgPath)
