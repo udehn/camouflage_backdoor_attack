@@ -40,9 +40,6 @@ The repository includes implementations of the following defense mechanisms:
 3. **cam_maps.csv: Local Features Information**:
     - Information about local features of images used for camouflage.
 
-4. **textures: Source Image for Texture Trigger**:
-    - Source image for a texture type trigger.
-
 ## saved_models:
 - Includes a trained model with ASR (Attack Success Rate) of 96.4% and ACC (Accuracy) of 88.6%.
 
