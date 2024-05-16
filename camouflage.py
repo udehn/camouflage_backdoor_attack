@@ -175,7 +175,7 @@ def generateOneAttackImgs(sourceImgPath, targetImgPath, attackImgPath, ind):
     # draw.rectangle([50,50,175,175], width=20)
 
     x, y = targetImg.size
-    img2 = Image.open("D:/jupyter_project/evalxai/data/textures/2_leaf.jpg").resize((x, y))
+    img2 = Image.open("./data/textures/2_leaf.jpg").resize((x, y))
 
     img3 = Image.composite(img2, targetImg, mask=mask)
 
