@@ -19,7 +19,7 @@ The repository includes implementations of the following defense mechanisms:
 3. STRIP
 4. Additionally, the related methods of defense CBD is built in `utils.util`.
 
-## Data:
+## data:
 
 1. **ImageNet: ImageNet Dataset Subset**:
     - Includes a subset of the ImageNet dataset with 10 categories. Category names:
